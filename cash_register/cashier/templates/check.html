@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="{% static 'cashier/main.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'cashier/style.css' %}"> -->
+    <style>
+        div {
+            margin-bottom: 0;
+        }
+        .header {
+            line-height: 5px;
+        }
+        .ml-5px {
+            margin-left: 47px;
+        }
+        .ml-30px {
+            margin-left: 30px;
+        }
+        .ml-8px {
+            margin-left: 8px;
+        }
+        .ml-17px {
+            margin-left: 17px;
+        }
+        .ml-68px {
+            margin-left: 68px;
+        }
+        .ml-35px {
+            margin-left: 35px;
+        }
+        .ml-52px {
+            margin-left: 52px;
+        }
+        .ml-30px {
+            margin-left: 30px;
+        }
+
+        .items {
+            margin-bottom: 30px;
+        }
+        .item {
+            margin-top: 0;
+        }
+        body {
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.2;
+            width: 170px;
+            margin: 0 auto;
+            letter-spacing: .5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>ООО "КОМПАНИЯ К"</p>
+            <p>Добро пожаловать</p>
+            <p>ККМ 00075411 <span class="ml-30px">#3969</span></p>
+            <p>ИНН 1087746942040</p>
+            <p class="ml-5px">ЭКЛЗ 3851495566</p>
+            <p>{{date}} СИС.</p>
+        </div>
+
+        <div class="items">
+            <p class="ml-8px">АДМИ</p>
+            {% for item in items %}
+                <div class="item">
+                    <p>{{item.item}}</p>    
+                    
+                    <p class="ml-17px">{{ item.count }} <span class="ml-68px">={{item.total_price}}</span></p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="total">
+            <p><b>ИТОГ</b></p>
+            <p class="ml-35px"><b>{{total}}</b></p>
+            <p>НАЛИЧНЫМИ <span class="ml-30px">={{total}}</span></p>
+        </div>
+
+        <div class="footer">
+            <div class="filler"></div>
+            <p class="ml-52px">00003751# 05970</p>
+        </div>
+    </div>
+    <script>
+        function fillStars() {
+            const footer = document.querySelector('body');
+            const filler = document.querySelector('.filler');
+            const footerWidth = Math.floor(footer.offsetWidth / 7.6);
+
+            // Создаем строку из символов '*'
+            let stars = '';
+            for (let i = 0; i < footerWidth; i++) {
+                stars += '*';
+            }
+            filler.textContent = stars;
+        }
+        window.addEventListener('load', fillStars);
+    </script>
+</body>
+</html>
